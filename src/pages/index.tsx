@@ -1,4 +1,8 @@
 import Head from 'next/head';
+import Link from 'next/link';
+import { MagnifyingGlassIcon, BellAlertIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import avatar from '@/assets/Netflix-avatar.png';
+import Image from 'next/image';
 
 export default function Home() {
     return (
@@ -9,8 +13,47 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main>
-                <h1> Helooo</h1>
+            <main className="w-full h-[100%] bg-[#141414] relative">
+                <div className="w-[100%]">
+                    <img
+                        alt="banner"
+                        className="w-[100%] h-[100%] object-contain"
+                        src="https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWO1pyd9LsEfzM6tQ4GJM3_3urz46qZU-pP9vQn7AZc2qmJxs7jGIUVYssvrB9NkS_B858CMFde9PbfnMXn6iX6ZAqBfKZ4g-TJ3.webp?r=cb4"
+                    />
+                </div>
+                <div className=" flex items-center justify-between pl-20 fixed top-0 w-[100%] h-[68px] bg-gradient-to-b from-black to-transparent ">
+                    <div className="flex gap-4 items-center">
+                        <img src="https://rb.gy/ulxxee" alt="netflix-logo" className="md:w-[110px] w-[90px]" />
+                        <ul className="text-textColor hidden lg:flex gap-4 text-sm lg:text-base ">
+                            <li className="hover:text-textColor/50">
+                                <Link href="/">Home</Link>
+                            </li>
+                            <li className="hover:text-textColor/50">
+                                <Link href="/">TV shows</Link>
+                            </li>
+                            <li className="hover:text-textColor/50">
+                                <Link href="/">Movies</Link>
+                            </li>
+                            <li className="hover:text-textColor/50">
+                                <Link href="/">News and Popular</Link>
+                            </li>
+                            <li className="hover:text-textColor/50">
+                                <Link href="/">My List</Link>
+                            </li>
+                            <li className="hover:text-textColor/50">
+                                <Link href="/">Browse by Language</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="text-textColor flex">
+                        <MagnifyingGlassIcon width={24} />
+                        <BellAlertIcon width={24} />
+                        <div className="flex">
+                            <Image src={avatar} alt="avatar" width={32} />
+                            <ChevronDownIcon width={24} />
+                        </div>
+                    </div>
+                </div>
             </main>
         </>
     );
