@@ -1,4 +1,5 @@
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 export const requests = {
@@ -11,3 +12,6 @@ export const requests = {
     fetchRomanceMovies: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=10749`,
     fetchDocumentaries: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=99`,
 };
+
+//  https://api.themoviedb.org/3/trending/all/week?api_key=27ea68f37292a13fcf5d3fb8da86c4d3&language=en-US
+

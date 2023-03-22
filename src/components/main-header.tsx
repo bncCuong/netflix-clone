@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+
 import {
     MagnifyingGlassIcon,
     BellAlertIcon,
@@ -18,12 +19,20 @@ import { PlayIcon } from '@heroicons/react/24/solid';
 
 import avatar from '@/assets/Netflix-avatar.png';
 import Tippy from '@tippyjs/react/headless';
-import { Button, TippyStyle } from '@/utils';
+import { Button, TippyStyle, baseUrl } from '@/utils';
+import { Movie } from '../../types';
 
-export const MainHeader = () => {
+type Props = {
+    netflixOgirinals: Movie[]
+}
+
+export const MainHeader = ({netflixOgirinals} : Props) => {
+    const [movie, setMovie] = useState<Movie | null>(null)
+
     const [showInputSearch, setShowInputSearch] = useState<boolean>(true);
     const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
-
+    
+    //NAVBAR STYLE HANDLE
     useEffect(() => {
         const scrollHanler = () => {
             if (window.scrollY === 0) {
@@ -36,15 +45,53 @@ export const MainHeader = () => {
         return () => window.removeEventListener('scroll', scrollHanler);
     }, []);
 
+    //RANDOM MOVIE
+    useEffect(() => {
+        setMovie(netflixOgirinals[Math.floor((Math.random() * netflixOgirinals.length))])
+    }, [netflixOgirinals])
+
+    console.log(movie);
+    
+    
     return (
-        <header className="relative">
-            <div className="w-[100%]  ">
-                <img
+        <header className="relative w-screen">
+            <div className="w-screen h-[94vh] absolute top-0 left-0  object-contain -z-10 ">
+                <Image
                     alt="banner"
-                    className="w-[100%] h-[100%] object-contain  "
-                    src="https://occ-0-395-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABWO1pyd9LsEfzM6tQ4GJM3_3urz46qZU-pP9vQn7AZc2qmJxs7jGIUVYssvrB9NkS_B858CMFde9PbfnMXn6iX6ZAqBfKZ4g-TJ3.webp?r=cb4"
+                    className="object-cover "
+                    src={`${baseUrl}${movie?.backdrop_path|| movie?.poster_path}`}
+                    fill
                 />
+
+                 <div className="absolute w-[100%] left-[70px] bottom-[30%] flex gap-4 z-50">
+                    <Button
+                        onClick={() => {}}
+                        className="bg-white/80 min-w-[60px] w-[10%]  md:h-[36px] h-[32px] lg:h-[44px] xl:h-[56px] hover:bg-white/70 "
+                        textSize="xl"
+                    >
+                        <PlayIcon className="w-[16px] md:w-[18px] lg:w-[28px] xl:w-[32px]" />{' '}
+                        <span className="text-xs font-bold md:text-sm lg:text-base xl:text-xl">Play</span>
+                    </Button>
+
+                    <Button
+                        onClick={() => {}}
+                        className="bg-[#59595a]/70 min-w-[54px] w-[18%] md:w-[14%] md:h-[36px] h-[32px] lg:h-[44px] xl:h-[56px] hover:bg-[#59595a]/50 "
+                        textSize="xl"
+                    >
+                        <ExclamationCircleIcon className=" text-white w-[16px] md:w-[18px] lg:w-[28px] xl:w-[32px]" />{' '}
+                        <span className="text-xs text-white md:text-sm lg:text-sm xl:text-xl">More Info</span>
+                    </Button>
+                </div>
+                <div className="absolute right-0 bottom-[31%] flex gap-4 z-0 ">
+                    <div className="text-white bg-white/10 hover:bg-white/20 cursor-pointer w-8 h-8 border flex items-center justify-center rounded-full">
+                        <ArrowPathIcon width={20} />
+                    </div>
+                    <div className="md:w-24 w-16 md:h-8 h-6 bg-[#3339]/50 text-white border-l-4 flex items-center pl-2">
+                        16 +
+                    </div>
+                </div>
             </div>
+
             <div
                 className={` flex items-center justify-between fixed top-0 w-[100%] px-8 lg:px-16 h-[68px] bg-gradient-to-b from-black to-transparent ${
                     !isTopOfPage ? 'bg-black' : 'from-black to-transparent'
@@ -110,7 +157,7 @@ export const MainHeader = () => {
                             <div
                                 className={` ${
                                     showInputSearch ? 'block' : 'hidden'
-                                } flex cursor-pointer text-textColor font-bold block lg:hidden text-sm md:text-base relative before:absolute before:content-[''] before:top-3 before:left-0 before:bg-transparent before:w-20 before:h-10`}
+                                }  cursor-pointer text-textColor font-bold block lg:hidden text-sm md:text-base relative before:absolute before:content-[''] before:top-3 before:left-0 before:bg-transparent before:w-20 before:h-10`}
                             >
                                 Browser
                                 <ChevronDownIcon className="w-[18px] md:w-[24px]" />
@@ -202,34 +249,8 @@ export const MainHeader = () => {
                     </Tippy>
                 </div>
             </div>
-            <div className="absolute left-[70px] bottom-[37%] w-[100%] flex gap-4  ">
-                <Button
-                    onClick={() => {}}
-                    className="bg-white/80 min-w-[60px] w-[10%]  md:h-[36px] h-[32px] lg:h-[44px] xl:h-[56px] hover:bg-white/70 "
-                    textSize="xl"
-                >
-                    <PlayIcon className="w-[16px] md:w-[18px] lg:w-[28px] xl:w-[32px]" />{' '}
-                    <span className="text-xs font-bold md:text-sm lg:text-base xl:text-xl">Play</span>
-                </Button>
 
-                <Button
-                    onClick={() => {}}
-                    className="bg-[#59595a]/70 min-w-[54px] w-[18%] md:w-[14%] md:h-[36px] h-[32px] lg:h-[44px] xl:h-[56px] hover:bg-[#59595a]/50 "
-                    textSize="xl"
-                >
-                    <ExclamationCircleIcon className=" text-white w-[16px] md:w-[18px] lg:w-[28px] xl:w-[32px]" />{' '}
-                    <span className="text-xs text-white md:text-sm lg:text-sm xl:text-xl">More Info</span>
-                </Button>
-            </div>
-
-            <div className="absolute right-0 bottom-[38%] flex gap-4 z-0 ">
-                <div className="text-white bg-white/10 hover:bg-white/20 cursor-pointer w-8 h-8 border flex items-center justify-center rounded-full">
-                    <ArrowPathIcon width={20} />
-                </div>
-                <div className="md:w-24 w-16 md:h-8 h-6 bg-[#3339]/50 text-white border-l-4 flex items-center pl-2">
-                    16 +
-                </div>
-            </div>
+           
         </header>
     );
 };
