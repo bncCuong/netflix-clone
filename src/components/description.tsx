@@ -11,7 +11,7 @@ export const Description = () => {
             <div className=" sm:flex gap-2 items-center justify-center ">
                 <Input />
                 <div className="mt-2 sm:mt-0 ml-[27%] sm:ml-0 ">
-                    <Button medium={true} content="Get Started >" />
+                    <Button medium={true}>Get Started</Button>
                 </div>
             </div>
         </div>

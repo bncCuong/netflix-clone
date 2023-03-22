@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 export type ButtonProps = {
     small?: boolean;
     medium?: boolean;
-    content: string;
     width?: string;
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    textColor?: string;
+
+    textSize?: string;
+    children?: ReactNode;
+    className?: string;
+};
+
+export type Tippy = {
+    children: ReactNode;
+    width: string;
+    borderTop?: boolean;
+    attrs: any;
+    arrowCenter?: boolean;
 };

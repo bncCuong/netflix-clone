@@ -7,3 +7,4 @@ export * from './aboutKids';
 export * from './question';
 export * from './answer';
 export * from './footer';
+export * from './main-header';

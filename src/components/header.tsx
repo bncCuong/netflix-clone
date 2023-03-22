@@ -12,7 +12,9 @@ export const Header = (props: Props) => {
         <header className="w-[100%]  ">
             <div className="h-[86px]  flex items-center justify-between mt-5">
                 <img src="https://rb.gy/ulxxee" alt="netflix-logo" className="md:w-[148px] w-[100px]" />
-                <Button onClick={btnClickHanler} content="Sign In" small={true} />
+                <Button onClick={btnClickHanler} small={true} textColor="white">
+                    Sign In
+                </Button>
             </div>
         </header>
     );

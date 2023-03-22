@@ -2,19 +2,35 @@ import { ButtonProps } from '../../types';
 
 type Props = ButtonProps;
 
-export const Button = ({ width = '', small = false, medium = false, content, onClick }: Props) => {
-    const classes = {
-        small: `${width ? width : 'w-[70px]'} h-[32px] text-normal flex items-center justify-center pb-1`,
-        medium: `${width ? width : 'w-[200px]'} h-[56px] text-2xl flex items-center justify-center `,
-    };
+export const Button = ({
+    width,
+    small = false,
+    medium = false,
+    onClick,
+    textColor,
+    textSize,
+    className,
+    children,
+}: Props) => {
+    const sizeSmall = `${
+        width ? width : 'w-[70px]'
+    } bg-btnBg hover:bg-btnBg/90 h-[32px] text-normal flex items-center justify-center pb-1`;
+    const sizeMedium = `${
+        width ? width : 'w-[200px]'
+    } bg-btnBg hover:bg-btnBg/90 h-[56px] text-2xl flex items-center justify-center `;
+
     return (
         <button
             onClick={onClick}
             className={`${
-                small ? classes.small : medium ? classes.medium : ''
-            } bg-btnBg w-[${width}] rounded-md hover:bg-btnBg/90 flex justify-center items-center z-50`}
+                small ? sizeSmall : medium ? sizeMedium : ''
+            } ${className} rounded-md flex justify-center items-center z-50`}
         >
-            <p className="font-semibold text-textColor leading-[28px] ">{content}</p>
+            <div
+                className={`font-semibold text-${textColor} text-${textSize} leading-[28px] w-[100%] sm:gap-2 gap-1 flex justify-center items-center`}
+            >
+                {children}
+            </div>
         </button>
     );
 };
