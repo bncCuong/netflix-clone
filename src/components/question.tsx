@@ -62,7 +62,9 @@ export const Question = () => {
                         />
                     </div>
                     <div className="mt-6 sm:mt-0 ml-[33%] sm:ml-0 ">
-                        <Button medium={true} content="Get Started >" />
+                        <Button className="" medium={true}>
+                            Get Started
+                        </Button>
                     </div>
                 </div>
             </div>

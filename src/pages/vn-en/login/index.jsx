@@ -41,7 +41,9 @@ const Index = () => {
                         {showPassWord ? <EyeSlashIcon /> : <EyeIcon />}
                     </div>
 
-                    <Button medium={true} content="Sign in" width="100%" onClick={() => router.push('/vn-en')} />
+                    <Button medium={true}  onClick={() => router.push('/vn-en')}>
+                        Sign In
+                    </Button>
                     <div className="mt-3 flex justify-between">
                         <div className="flex items-center gap-2 ">
                             <input type="checkbox" className="w-4 h-4 bg-gray-500 checked:bg-slate-500" />
