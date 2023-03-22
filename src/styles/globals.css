@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    body {
+        @apply scrollbar-track-transparent scrollbar-thin scrollbar-track-gray-900;
+    }
+}
+
 html,
 body,
 * {

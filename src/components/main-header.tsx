@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-
 import {
     MagnifyingGlassIcon,
     BellAlertIcon,
@@ -23,15 +22,15 @@ import { Button, TippyStyle, baseUrl } from '@/utils';
 import { Movie } from '../../types';
 
 type Props = {
-    netflixOgirinals: Movie[]
-}
+    netflixOgirinals: Movie[];
+};
 
-export const MainHeader = ({netflixOgirinals} : Props) => {
-    const [movie, setMovie] = useState<Movie | null>(null)
+export const MainHeader = ({ netflixOgirinals }: Props) => {
+    const [movie, setMovie] = useState<Movie | null>(null);
 
     const [showInputSearch, setShowInputSearch] = useState<boolean>(true);
     const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
-    
+
     //NAVBAR STYLE HANDLE
     useEffect(() => {
         const scrollHanler = () => {
@@ -47,26 +46,26 @@ export const MainHeader = ({netflixOgirinals} : Props) => {
 
     //RANDOM MOVIE
     useEffect(() => {
-        setMovie(netflixOgirinals[Math.floor((Math.random() * netflixOgirinals.length))])
-    }, [netflixOgirinals])
+        setMovie(netflixOgirinals[Math.floor(Math.random() * netflixOgirinals.length)]);
+    }, [netflixOgirinals]);
 
     console.log(movie);
-    
-    
+
     return (
-        <header className="relative w-screen">
-            <div className="w-screen h-[94vh] absolute top-0 left-0  object-contain -z-10 ">
+        <header className="relative w-[100%] h-[90vh] ">
+            <div className="w-[100%] h-[100%] z-0 absolute top-0 left-0  ">
                 <Image
                     alt="banner"
                     className="object-cover "
-                    src={`${baseUrl}${movie?.backdrop_path|| movie?.poster_path}`}
+                    src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
                     fill
+                    priority
                 />
 
-                 <div className="absolute w-[100%] left-[70px] bottom-[30%] flex gap-4 z-50">
+                <div className="absolute left-[40px] lg:left-[70px]  animation duration-500 bottom-[30%] flex gap-4 z-50 ">
                     <Button
                         onClick={() => {}}
-                        className="bg-white/80 min-w-[60px] w-[10%]  md:h-[36px] h-[32px] lg:h-[44px] xl:h-[56px] hover:bg-white/70 "
+                        className="bg-white/80 min-w-[60px] xl:w-[130px] md:w-[100px] sm:w-[100px] md:h-[36px] h-[32px] lg:h-[44px] xl:h-[56px] hover:bg-white/70 "
                         textSize="xl"
                     >
                         <PlayIcon className="w-[16px] md:w-[18px] lg:w-[28px] xl:w-[32px]" />{' '}
@@ -75,14 +74,14 @@ export const MainHeader = ({netflixOgirinals} : Props) => {
 
                     <Button
                         onClick={() => {}}
-                        className="bg-[#59595a]/70 min-w-[54px] w-[18%] md:w-[14%] md:h-[36px] h-[32px] lg:h-[44px] xl:h-[56px] hover:bg-[#59595a]/50 "
+                        className="bg-[#59595a]/70 min-w-[80px] w-[18%] xl:w-[180px] sm:w-[120px] md:h-[36px] h-[32px] lg:h-[44px] xl:h-[56px] hover:bg-[#59595a]/50 "
                         textSize="xl"
                     >
                         <ExclamationCircleIcon className=" text-white w-[16px] md:w-[18px] lg:w-[28px] xl:w-[32px]" />{' '}
                         <span className="text-xs text-white md:text-sm lg:text-sm xl:text-xl">More Info</span>
                     </Button>
                 </div>
-                <div className="absolute right-0 bottom-[31%] flex gap-4 z-0 ">
+                <div className="absolute right-0  bottom-[29.5%] flex gap-4 z-0 ">
                     <div className="text-white bg-white/10 hover:bg-white/20 cursor-pointer w-8 h-8 border flex items-center justify-center rounded-full">
                         <ArrowPathIcon width={20} />
                     </div>
@@ -90,12 +89,18 @@ export const MainHeader = ({netflixOgirinals} : Props) => {
                         16 +
                     </div>
                 </div>
+                <div className="relative z-20 top-[300px] w-fit text-textColor left-[40px] lg:left-[70px]  animation duration-500">
+                    <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-shadow-lg">
+                        {movie?.title || movie?.name}
+                    </h1>
+                    <p className="w-[400px] md:w-[500px] text-sm md:text-base text-shadow-md ">{movie?.overview}</p>
+                </div>
             </div>
 
             <div
                 className={` flex items-center justify-between fixed top-0 w-[100%] px-8 lg:px-16 h-[68px] bg-gradient-to-b from-black to-transparent ${
                     !isTopOfPage ? 'bg-black' : 'from-black to-transparent'
-                } animation duration-500 `}
+                } animation duration-500 z-50 `}
             >
                 <div className="flex gap-4 items-center">
                     <img
@@ -157,7 +162,7 @@ export const MainHeader = ({netflixOgirinals} : Props) => {
                             <div
                                 className={` ${
                                     showInputSearch ? 'block' : 'hidden'
-                                }  cursor-pointer text-textColor font-bold block lg:hidden text-sm md:text-base relative before:absolute before:content-[''] before:top-3 before:left-0 before:bg-transparent before:w-20 before:h-10`}
+                                }  cursor-pointer text-textColor font-bold flex lg:hidden text-sm md:text-base relative before:absolute before:content-[''] before:top-3 before:left-0 before:bg-transparent before:w-20 before:h-10`}
                             >
                                 Browser
                                 <ChevronDownIcon className="w-[18px] md:w-[24px]" />
@@ -249,8 +254,6 @@ export const MainHeader = ({netflixOgirinals} : Props) => {
                     </Tippy>
                 </div>
             </div>
-
-           
         </header>
     );
 };

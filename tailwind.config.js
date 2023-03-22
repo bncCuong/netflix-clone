@@ -21,6 +21,7 @@ module.exports = {
             animation: {
                 slidedown: 'slidedown 0.5s ease-in-out',
                 slideleft: 'slideleft 1s ease-in-out forwards',
+                slideright: 'slideright 0.5s ease-in-out forwards  ',
                 slowfade: 'slowfade 1s ease-in-out',
             },
             keyframes: {
@@ -37,8 +38,12 @@ module.exports = {
                     from: { opacity: 0, transfrom: 'translateX(100%)' },
                     to: { opacity: 1, transform: 'translateX(0)' },
                 },
+                slideright: {
+                    from: { opacity: 0, transfrom: 'translateX(-100%)' },
+                    to: { opacity: 1, transform: 'translateX(0)' },
+                },
             },
         },
     },
-    plugins: [],
+    plugins: [require('tailwindcss-textshadow'), require('tailwind-scrollbar'), require('tailwind-scrollbar-hide')],
 };
