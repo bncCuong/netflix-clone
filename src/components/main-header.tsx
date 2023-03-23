@@ -53,7 +53,7 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
   //RANDOM MOVIE
   useEffect(() => {
     setMovie(
-      netflixOgirinals[Math.floor(Math.random() * netflixOgirinals.length)],
+      netflixOgirinals[Math.floor(Math.random() * netflixOgirinals?.length)],
     );
   }, [netflixOgirinals]);
 
