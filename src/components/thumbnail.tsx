@@ -14,11 +14,12 @@ const Thumbnail = ({ movie }: Props) => {
         <div className="min-w-[200px] h-32 relative">
             {
                 <Image
-                    src={`${thumbnailUrl}${movie.backdrop_path}`}
+                    src={`${thumbnailUrl}${movie.backdrop_path || movie.poster_path}`}
                     alt="thumbnail"
                     fill
                     priority
                     className="w-[200px] h-[100%] absolute cursor-pointer rounded-sm "
+                    sizes="100"
                 />
             }
         </div>

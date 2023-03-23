@@ -11,6 +11,7 @@ export const Button = ({
     textSize,
     className,
     children,
+    type,
 }: Props) => {
     const sizeSmall = `${
         width ? width : 'w-[70px]'
@@ -21,6 +22,7 @@ export const Button = ({
 
     return (
         <button
+            type={type}
             onClick={onClick}
             className={`${
                 small ? sizeSmall : medium ? sizeMedium : ''

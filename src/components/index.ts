@@ -9,3 +9,4 @@ export * from './answer';
 export * from './footer';
 export * from './main-header';
 export * from './row';
+export * from './modal';
