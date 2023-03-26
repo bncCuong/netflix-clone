@@ -45,7 +45,7 @@ export const Row = ({ title, movie }: Props) => {
         {/* LEFT CHEVRON */}
         <div
           onClick={() => handleArrow('left')}
-          className={` relative  w-14 h-[127px] absolute bottom-0 -left-[66px] lg:-left-[66px]  hover:bg-white/10 z-10 flex items-center justify-center rounded-tr-md rounded-br-md opacity-0 group-hover:opacity-100 animation duration-500`}
+          className={`   w-14 h-[127px] absolute bottom-0 -left-[66px] lg:-left-[66px]  hover:bg-white/10 z-10 flex items-center justify-center rounded-tr-md rounded-br-md opacity-0 group-hover:opacity-100 animation duration-500`}
         >
           <ChevronLeftIcon className="w-[50px]  hover:scale-125 " />
         </div>

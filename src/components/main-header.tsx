@@ -110,7 +110,7 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
             16 +
           </div>
         </div>
-        <div className="relative z-20 top-[300px] w-fit text-textColor left-[40px] lg:left-[70px]  animation duration-500">
+        <div className="relative z-20 top-[28%] w-fit text-textColor left-[40px] lg:left-[70px]  animation duration-500">
           <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-shadow-lg">
             {movie?.title || movie?.name}
           </h1>
