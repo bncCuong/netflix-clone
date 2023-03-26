@@ -37,6 +37,8 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
   const { logout } = useAuth();
+
+
   //NAVBAR STYLE HANDLE
   useEffect(() => {
     const scrollHanler = () => {
@@ -52,9 +54,11 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
 
   //RANDOM MOVIE
   useEffect(() => {
-    setMovie(
-      netflixOgirinals[Math.floor(Math.random() * netflixOgirinals?.length)],
-    );
+    if (netflixOgirinals) {
+      setMovie(
+        netflixOgirinals[Math.floor(Math.random() * netflixOgirinals?.length)],
+      );
+    }
   }, [netflixOgirinals]);
 
   const logoutHanler = () => {
