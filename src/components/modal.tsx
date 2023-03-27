@@ -6,13 +6,9 @@ import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import { Button, thumbnailUrl } from '@/utils';
 import { Genre, Element } from '../../types';
-import Tippy from '@tippyjs/react/headless';
-import { TippyStyle } from '@/utils';
 import {
   HandThumbUpIcon,
   PlusCircleIcon,
-  SpeakerWaveIcon,
-  SpeakerXMarkIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 
@@ -55,8 +51,10 @@ export const ModalUI = () => {
         setGenres(data?.genres);
       }
     }
+
     fetchMovie();
   }, [currentMovie]);
+  console.log(trailer, genres);
 
   return (
     <Modal
@@ -68,7 +66,7 @@ export const ModalUI = () => {
         justifyContent: 'center',
       }}
     >
-      <div className=" scrollbar-hide overflow-y-auto w-[90%] h-[95%] lg:w-[80%] mt-10 pb-2 rounded-md  bg-shadow overflow-hidden bg-[#141414] relative">
+      <div className=" overflow-y-auto w-[90%] h-[95%] lg:w-[80%] mt-10 pb-2 rounded-md  bg-shadow overflow-hidden bg-[#141414] relative">
         <div className="w-[100%] h-[37%] md:h-[60%] lg:h-[70%] absolute ">
           <Image
             src={`${thumbnailUrl}${
@@ -81,71 +79,40 @@ export const ModalUI = () => {
             alt="banner"
           />
         </div>
-        <div
-          className="z-10 absolute w-[100%] h-[110%] -left-[] -top-[60px] 
-        sm:-top-[60px] sm:h-[140%] md:-top-[55px] md:h-[160%] 
-        lg:-top-[60px] lg:h-[170%] 2xl:h-[207%]
-        "
-        >
+        <div>
           <ReactPlayer
             url={`https://youtube.com/watch?v=${trailer}`}
             width="100%"
-            height="48%"
+            height="100%"
+            style={{ position: 'absolute', top: '-100px', left: 0 }}
             playing
-            muted={muted}
-            loop={true}
+            muted={false}
           />
         </div>
 
         <div
-          onClick={() => setMuted((prev) => !prev)}
-          className="absolute text-white/60 cursor-pointer hover:text-white hover:border-white right-14 top-80 sm:top-80 md:top-96 xl:top-[440px] 2xl:top-[500px] z-10 w-6 h-6 border-[1px] border-white/60 rounded-full flex items-center justify-center"
-        >
-          {!muted ? (
-            <SpeakerWaveIcon width={16} />
-          ) : (
-            <SpeakerXMarkIcon width={16} />
-          )}
-        </div>
-
-        <div
           onClick={handleClose}
-          className="absolute z-20 right-4 top-4 text-white cursor-pointer w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/50 bg-black/80 "
+          className="absolute right-4 top-4 text-white cursor-pointer w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/50 bg-black/80 "
         >
           <XMarkIcon width={24} />
         </div>
 
-        <div className="absolute left-4 top-[35%] sm:top-[49%] md:top-[60%] lg:top-[63%] xl:top-[80%] z-20">
+        <div className="absolute left-10 top-[15%] md:top-[34%] lg:top-[43%]">
           <h1 className="text-xl lg:text-2xl text-white font-bold">
             {currentMovie?.title}
           </h1>
 
-          <div className="  flex items-center mt-4 gap-2">
-            <Button className=" w-[80px] md:w-[77px] h-[32px] lg:w-[108px] lg:h-[40px] xl:w-[118px] xl:h-[42px] hover:bg-white/90 bg-white">
+          <div className="flex items-center mt-16 gap-4">
+            <Button className=" w-[65px] md:w-[77px] h-[32px] lg:w-[108px] lg:h-[40px] xl:w-[118px] xl:h-[42px] hover:bg-white/90 bg-white">
               <PlayIcon className="w-[16px] md:w-[22px]" />
               <span className="text-xs md:text-sm lg:text-base">Play</span>
             </Button>
-            <Tippy
-              render={(attrs) => (
-                <div
-                  {...attrs}
-                  tabIndex={-1}
-                  className="text-black bg-white/90 rounded-md px-2 py-1 font-semibold "
-                >
-                  Add to my list
-                </div>
-              )}
-            >
-              <PlusCircleIcon className="w-[28px] md:w-[32px] lg:w-[40px] text-white/70 hover:text-white cursor-pointer" />
-            </Tippy>
-            
-            <div className="w-5 h-5 md:h-6 md:w-6 border lg:h-7 lg:w-7 border-white rounded-full flex items-center justify-center">
-              <HandThumbUpIcon className="w-[14px] md:w-[18px] lg:w-[22px] text-white/70 hover:text-white cursor-pointer" />
-            </div>
+            <PlusCircleIcon className="w-[28px] md:w-[32px] lg:w-[40px] text-white/70 hover:text-white cursor-pointer" />
+            <HandThumbUpIcon className="w-[28px] md:w-[32px] lg:w-[40px] text-white/70 hover:text-white cursor-pointer" />
           </div>
         </div>
 
-        <div className="absolute top-[47%] text-white px-5 sm:top-[63%] md:top-[72%] lg:top-[76%] xl:top-[95%]">
+        <div className="absolute top-[40%] text-white px-10 md:top-[63%] lg:top-[73%] ">
           <p>{currentMovie?.release_date}</p>
           <div className="flex items-end gap-2 mt-2 leading-4">
             <Likeicon className="w-4 h-4 md:w-[24px] md:h-6 lg:w-[30px] lg:h-[30px] bg-red-700 text-white hover:text-white cursor-pointer rounded-sm" />
