@@ -38,7 +38,6 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
 
   const { logout } = useAuth();
 
-
   //NAVBAR STYLE HANDLE
   useEffect(() => {
     const scrollHanler = () => {
@@ -103,7 +102,7 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
           </Button>
         </div>
         <div className="absolute right-0  bottom-[29.5%] flex gap-4 z-0 ">
-          <div className="text-white bg-white/10 hover:bg-white/20 cursor-pointer w-8 h-8 border flex items-center justify-center rounded-full">
+          <div className=" text-white bg-white/10 hover:bg-white/20 cursor-pointer w-8 h-8 border flex items-center justify-center rounded-full">
             <ArrowPathIcon width={20} />
           </div>
           <div className="md:w-24 w-16 md:h-8 h-6 bg-[#3339]/50 text-white border-l-4 flex items-center pl-2">
