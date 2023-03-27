@@ -21,7 +21,7 @@ const Thumbnail = ({ movie }: Props) => {
           alt="thumbnail"
           fill
           priority
-          className="w-[200px] h-[100%] absolute cursor-pointer rounded-sm hover:scale-105 animate duration-300 "
+          className="w-[200px] h-[100%] absolute cursor-pointer rounded-sm hover:scale-105 animate duration-300 hover:scale-105 animate duration-300 "
           sizes="100"
           onClick={() => {
             setShowModal(true);
