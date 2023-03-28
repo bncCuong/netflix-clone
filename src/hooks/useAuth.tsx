@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       } else {
         setUser(null);
         setLoading(true);
-        router.push('/vn-en');
+        // router.push('/vn-en');
       }
       setInitialLoading(false);
     });
