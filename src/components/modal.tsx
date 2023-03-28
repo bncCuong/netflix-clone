@@ -14,6 +14,7 @@ import {
   HandThumbUpIcon,
   PlusCircleIcon,
   XMarkIcon,
+  CheckBadgeIcon,
 } from '@heroicons/react/24/outline';
 
 import {
@@ -27,7 +28,8 @@ export const ModalUI = () => {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
-  const [muted, setMuted] = useState<boolean>(true);
+  const [muted, setMuted] = useState<boolean>(false);
+  const [addToListBtn, setAddToListBtn] = useState<boolean>(false);
   const handleClose = () => {
     setShowModal(false);
   };
@@ -83,10 +85,12 @@ export const ModalUI = () => {
             alt="banner"
           />
         </div>
+
+        {/* TRAILER */}
         <div
           className="z-10 absolute w-[100%] h-[100%] -left-[0] -top-[70px] 
-        sm:-top-[60px] sm:h-[120%] md:-top-[55px] md:h-[139%] 
-        lg:-top-[60px] lg:h-[161%] xl:h-[175%] 2xl:h-[207%]
+        sm:-top-[60px] sm:h-[120%] md:-top-[55px] md:h-[141%] 
+        lg:-top-[60px] lg:h-[163%] xl:h-[175%] 2xl:h-[207%]
         "
         >
           <ReactPlayer
@@ -107,16 +111,16 @@ export const ModalUI = () => {
            z-10 w-6 h-6 border-[1px] border-white/60 rounded-full 
            flex items-center justify-center"
         >
-          {!muted ? (
-            <SpeakerWaveIcon width={16} />
-          ) : (
+          {muted ? (
             <SpeakerXMarkIcon width={16} />
+          ) : (
+            <SpeakerWaveIcon width={16} />
           )}
         </div>
 
         <div
           onClick={handleClose}
-          className="absolute z-20 right-4 top-4 text-white cursor-pointer w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/50 bg-black/80 "
+          className="absolute z-20 right-4 top-10 text-white cursor-pointer w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/50 bg-black/80 "
         >
           <XMarkIcon width={24} />
         </div>
@@ -133,19 +137,38 @@ export const ModalUI = () => {
               <PlayIcon className="w-[16px] md:w-[22px]" />
               <span className="text-xs md:text-sm lg:text-base">Play</span>
             </Button>
-            <Tippy
-              render={(attrs) => (
-                <div
-                  {...attrs}
-                  tabIndex={-1}
-                  className="text-black bg-white/90 rounded-md px-2 py-1 font-semibold "
+
+            <div onClick={() => setAddToListBtn((prev) => !prev)}>
+              {addToListBtn ? (
+                <Tippy
+                  render={(attrs) => (
+                    <div
+                      {...attrs}
+                      tabIndex={-1}
+                      className="text-black bg-white/90 rounded-md px-2 py-1 font-semibold "
+                    >
+                      Add to my list
+                    </div>
+                  )}
                 >
-                  Add to my list
-                </div>
+                  <PlusCircleIcon className="w-[28px] md:w-[32px] lg:w-[40px] text-white/70 hover:text-white cursor-pointer" />
+                </Tippy>
+              ) : (
+                <Tippy
+                  render={(attrs) => (
+                    <div
+                      {...attrs}
+                      tabIndex={-1}
+                      className="text-black bg-white/90 rounded-md px-2 py-1 font-semibold "
+                    >
+                      Remove from my list
+                    </div>
+                  )}
+                >
+                  <CheckBadgeIcon className="w-[28px] md:w-[32px] lg:w-[40px] text-white/70 hover:text-white cursor-pointer" />
+                </Tippy>
               )}
-            >
-              <PlusCircleIcon className="w-[28px] md:w-[32px] lg:w-[40px] text-white/70 hover:text-white cursor-pointer" />
-            </Tippy>
+            </div>
 
             <div className="w-5 h-5 md:h-6 md:w-6 border lg:h-7 lg:w-7 border-white rounded-full flex items-center justify-center">
               <HandThumbUpIcon className="w-[14px] md:w-[18px] lg:w-[22px] text-white/70 hover:text-white cursor-pointer" />

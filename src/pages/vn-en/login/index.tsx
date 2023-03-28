@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { EyeSlashIcon, EyeIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/router';
 import { useForm, SubmitHandler } from 'react-hook-form';
-
+// import Spinner from 'react-spinkit';
 //hooks
 import { useMediaQuery, useAuth } from '@/hooks';
 //Components
@@ -25,15 +25,13 @@ const Index = () => {
   const mediaQuery = useMediaQuery('(max-width: 768px )');
   const router = useRouter();
 
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, loading } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async ({ email, passWord }) => {
-    console.log(email, passWord);
-
     if (login) {
       await signIn(email, passWord);
     } else {
@@ -43,6 +41,11 @@ const Index = () => {
 
   return (
     <div className="w-[full] h-full flex flex-col items-center relative">
+      {loading && (
+        <div className="absolute text-5xl text-red-700">
+          {/* <Spinner /> */}loading...
+        </div>
+      )}
       {mediaQuery ? (
         <div className="bg-black w-[100%] h-[100%] absolute -z-20 inset-0"></div>
       ) : (
@@ -147,7 +150,7 @@ const Index = () => {
                 onClick={() => setLogin(false)}
                 className="text-textColor"
               >
-                Sign in now
+                Sign up now
               </button>
             </h1>
             <div className="text-sm my-4">

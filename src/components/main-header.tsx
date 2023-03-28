@@ -23,6 +23,7 @@ import { Movie } from '../../types';
 import { useAuth } from '@/hooks';
 import { useRecoilState } from 'recoil';
 import { modalState, movieState } from '@/atoms';
+import { useRouter } from 'next/router';
 
 type Props = {
   netflixOgirinals: Movie[];
@@ -37,6 +38,8 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
   const { logout } = useAuth();
+
+  const router = useRouter();
 
   //NAVBAR STYLE HANDLE
   useEffect(() => {
@@ -62,6 +65,7 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
 
   const logoutHanler = () => {
     logout();
+    router.push('/vn-en');
   };
 
   return (
@@ -220,7 +224,7 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
             placement="top-end"
             delay={[0, 300]}
             render={(attrs) => (
-              <TippyStyle width="500px" borderTop={true} attrs={attrs}>
+              <TippyStyle width="400px" borderTop={true} attrs={attrs}>
                 <div className=" hover:bg-black w-[100%] h-[150px] flex items-center justify-center text-2xl text-textColor/60">
                   No recent notifications
                 </div>
