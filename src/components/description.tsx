@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 export const Description = () => {
   const router = useRouter();
   const btnClickHanler = () => {
-    router.push('/vn-en/login');
+    router.push('/signup');
   };
   return (
     <div className="  mt-[210px] flex flex-col gap-6 justify-center items-center text-textColor text-center">

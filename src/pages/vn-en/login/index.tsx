@@ -46,14 +46,17 @@ const Index = () => {
           {/* <Spinner /> */}loading...
         </div>
       )}
+
       {mediaQuery ? (
         <div className="bg-black w-[100%] h-[100%] absolute -z-20 inset-0"></div>
       ) : (
-        <Image
-          alt="banner"
-          src={banner}
-          className=" absolute w-[100%] h-[100%] object-cover -z-40"
-        />
+        <div className="absolute inset-0 bg-black/40 ">
+          <Image
+            alt="banner"
+            src={banner}
+            className=" absolute w-[100%] h-[100%] object-cover -z-40 "
+          />
+        </div>
       )}
       <img
         src="https://rb.gy/ulxxee"
@@ -193,7 +196,7 @@ const Index = () => {
       </div>
 
       <footer
-        className={`w-[100%] bg-black/70 mt-20 ${
+        className={`w-[100%] bg-black/70 mt-20 z-20 ${
           mediaQuery ? 'border-t-2 border-white/50' : ''
         } `}
       >

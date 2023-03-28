@@ -1,9 +1,11 @@
 import { Button } from '@/utils';
 import { useRouter } from 'next/router';
 
-type Props = {};
+type Props = {
+  contentBtn?: string;
+};
 
-export const Header = (props: Props) => {
+export const Header = ({ contentBtn }: Props) => {
   const router = useRouter();
   const btnClickHanler = () => {
     router.push('/vn-en/login');
@@ -12,7 +14,7 @@ export const Header = (props: Props) => {
     router.push('/');
   };
   return (
-    <header className="w-[100%]  ">
+    <header className="w-[100%]">
       <div className="h-[86px]  flex items-center justify-between mt-5">
         <img
           onClick={logoClickHanler}
@@ -20,8 +22,13 @@ export const Header = (props: Props) => {
           alt="netflix-logo"
           className="md:w-[148px] w-[100px] cursor-pointer"
         />
-        <Button onClick={btnClickHanler} small={true} textColor="white">
-          Sign In
+        <Button
+          onClick={btnClickHanler}
+          small={contentBtn ? false : true}
+          textColor={contentBtn ? 'black' : 'white'}
+          content={contentBtn}
+        >
+          {contentBtn ? contentBtn : 'Sign In'}
         </Button>
       </div>
     </header>
