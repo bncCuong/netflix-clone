@@ -69,110 +69,120 @@ export const ChooseThePlan = (props: Props) => {
           Premium
         </div>
       </div>
+      <table className="w-[100%] mt-6">
+        {/* MONTHLY PRICE */}
+        <tr>
+          <p className="text-center text-gray-400/70 mt-4 ">Monthly Price</p>
+        </tr>
+        <tr>
+          <ul className="flex justify-between px-4 py-3 border-b-[1px] border-gray-400/50">
+            <li>
+              70.000<span className="underline">đ</span>
+            </li>
+            <li>
+              108.000<span className="underline">đ</span>
+            </li>
+            <li>
+              220.000<span className="underline">đ</span>
+            </li>
+            <li>
+              260.000<span className="underline">đ</span>
+            </li>
+          </ul>
+        </tr>
 
-      {/* MONTHLY PRICE */}
-      <div className=" mt-4 text-gray-500 text-sm ">
-        <p className="text-center ">Monthly Price</p>
-        <ul className="flex justify-between px-4 py-3 border-b-[1px] border-gray-400/50">
-          <li>
-            70.000<span className="underline">đ</span>
-          </li>
-          <li>
-            108.000<span className="underline">đ</span>
-          </li>
-          <li>
-            220.000<span className="underline">đ</span>
-          </li>
-          <li>
-            260.000<span className="underline">đ</span>
-          </li>
-        </ul>
-      </div>
+        {/* VIDEO QUALITY */}
+        <tr>
+          <p className="text-center text-gray-400/70 mt-4">Video quality</p>
+        </tr>
+        <tr>
+          <ul className="flex justify-between px-6 py-3 border-b-[1px] border-gray-400/50">
+            <li>Good</li>
+            <li>Good</li>
+            <li>Better</li>
+            <li className="pr-3">Best</li>
+          </ul>
+        </tr>
 
-      {/* VIDEO QUALITY */}
-      <div className="flex flex-col mt-4 text-gray-500 text-sm ">
-        <p className="text-center">Video quality</p>
-        <ul className="flex justify-between px-6 py-3 border-b-[1px] border-gray-400/50">
-          <li>Good</li>
-          <li>Good</li>
-          <li>Better</li>
-          <li className="pr-3">Best</li>
-        </ul>
-      </div>
+        {/* Resolution */}
+        <tr>
+          <p className="text-center text-gray-400/70 mt-4">Resolution</p>
+        </tr>
+        <tr>
+          <ul className="flex justify-between px-6 py-3 border-b-[1px] border-gray-400/50">
+            <li>480p</li>
+            <li className="pl-2">720p</li>
+            <li className="pl-3">1080p</li>
+            <li className="">4K+HDR</li>
+          </ul>
+        </tr>
 
-      {/* Resolution */}
-      <div className="flex flex-col mt-4 text-gray-500 text-sm ">
-        <p className="text-center">Resolution</p>
-        <ul className="flex justify-between px-6 py-3 border-b-[1px] border-gray-400/50">
-          <li>480p</li>
-          <li className="pl-2">720p</li>
-          <li className="pl-3">1080p</li>
-          <li className="">4K+HDR</li>
-        </ul>
-      </div>
+        {/* Devices you can use to watch */}
+        <tr>
+          <p className="text-center text-gray-400/70 my-4">
+            Devices you can use to watch
+          </p>
+        </tr>
+        <tr className="w-[100%]">
+          <ul className="flex w-[100%] ">
+            <li className="w-[25%] ml-6">
+              <p>
+                <DevicePhoneMobileIcon className="w-12" /> Phone
+              </p>
+              <p>
+                <DeviceTabletIcon className="w-12" /> Tablet
+              </p>
+            </li>
+            <li className="w-[25%]">
+              <p>
+                <DevicePhoneMobileIcon className="w-12" /> Phone
+              </p>
+              <p>
+                <DeviceTabletIcon className="w-12" /> Tablet
+              </p>
+              <p>
+                <ComputerDesktopIcon className="w-12" />{' '}
+                <span className="mr-6">Comp</span>
+              </p>
+              <p>
+                <TvIcon className="w-12" /> <span className="">TV</span>
+              </p>
+            </li>
 
-      {/* Devices you can use to watch */}
-      <div className="flex flex-col mt-4 text-gray-500 text-sm ">
-        <p className="text-center">Devices you can use to watch</p>
-        <ul className="flex justify-between md:justify-end px-4 py-3 border-b-[1px] border-gray-400/50">
-          <li className="flex flex-col space-y-2">
-            <p>
-              <DevicePhoneMobileIcon className="w-12 pr-1" /> Phone
-            </p>
-            <p>
-              <DeviceTabletIcon className="w-12 pr-1" /> Tablet
-            </p>
-          </li>
-          <li className="flex flex-col space-y-2 pl-16 sm:pl-[9rem] md:pl-0">
-            <p>
-              <DevicePhoneMobileIcon className="w-12 pr-1" /> Phone
-            </p>
-            <p>
-              <DeviceTabletIcon className="w-12 pr-1" /> Tablet
-            </p>
-            <p>
-              <ComputerDesktopIcon className="w-12" />{' '}
-              <span className="mr-6">Computer</span>
-            </p>
-            <p>
-              <TvIcon className="w-12" /> <span className="ml-3">TV</span>
-            </p>
-          </li>
-
-          <li className="flex flex-col space-y-2 pl-8 sm:pl-[6rem] md:pl-0 ">
-            {' '}
-            <p>
-              <DevicePhoneMobileIcon className="w-12 pr-1" /> Phone
-            </p>
-            <p>
-              <DeviceTabletIcon className="w-12 pr-1" /> Tablet
-            </p>
-            <p>
-              <ComputerDesktopIcon className="w-12" />{' '}
-              <span className="mr-6">Computer</span>
-            </p>
-            <p>
-              <TvIcon className="w-12" /> <span className="ml-3">TV</span>
-            </p>
-          </li>
-          <li className="flex flex-col space-y-2 pl-8 sm:pl-[6rem] md:pl-0">
-            {' '}
-            <p>
-              <DevicePhoneMobileIcon className="w-12 pr-1" /> Phone
-            </p>
-            <p>
-              <DeviceTabletIcon className="w-12 pr-1" /> Tablet
-            </p>
-            <p>
-              <ComputerDesktopIcon className="w-12" />{' '}
-              <span className="mr-6">Computer</span>
-            </p>
-            <p>
-              <TvIcon className="w-12" /> <span className="ml-3">TV</span>
-            </p>
-          </li>
-        </ul>
-      </div>
+            <li className="w-[25%] ">
+              <p>
+                <DevicePhoneMobileIcon className="w-12" /> Phone
+              </p>
+              <p>
+                <DeviceTabletIcon className="w-12" /> Tablet
+              </p>
+              <p>
+                <ComputerDesktopIcon className="w-12" />{' '}
+                <span className="mr-6">Comp</span>
+              </p>
+              <p>
+                <TvIcon className="w-12" /> <span className="">TV</span>
+              </p>
+            </li>
+            <li className="w-[25%]">
+              {' '}
+              <p>
+                <DevicePhoneMobileIcon className="w-12" /> Phone
+              </p>
+              <p>
+                <DeviceTabletIcon className="w-12" /> Tablet
+              </p>
+              <p>
+                <ComputerDesktopIcon className="w-12" />{' '}
+                <span className="mr-6">Comp</span>
+              </p>
+              <p>
+                <TvIcon className="w-12" /> <span className="">TV</span>
+              </p>
+            </li>
+          </ul>
+        </tr>
+      </table>
 
       <div className="mt-10 flex flex-col items-center space-y-10 pb-32">
         <p>
