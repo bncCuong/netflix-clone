@@ -3,7 +3,7 @@ import { requests } from '../utils';
 import { Footer, MainHeader, ModalUI, Row } from '@/components';
 import { Movie } from '../../types';
 import { useRecoilValue } from 'recoil';
-import { modalState } from '@/atoms';
+import { modalTrailerState } from '@/atoms';
 
 interface Props {
   netflixOriginals: Movie[];
@@ -26,7 +26,8 @@ export default function Home({
   romanceMovies,
   documentaries,
 }: Props) {
-  const showModal = useRecoilValue(modalState);
+  const showModal = useRecoilValue(modalTrailerState);
+
   return (
     <>
       <Head>

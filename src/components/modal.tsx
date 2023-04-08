@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player/lazy';
-import { modalState, movieState } from '@/atoms';
+import { modalTrailerState, movieState } from '@/atoms';
 import Modal from '@mui/material/Modal';
 import Image from 'next/image';
 import { useRecoilState } from 'recoil';
@@ -26,10 +26,11 @@ import {
 export const ModalUI = () => {
   const [trailer, setTrailer] = useState('');
   const [genres, setGenres] = useState<Genre[]>([]);
-  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [showModal, setShowModal] = useRecoilState(modalTrailerState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
   const [muted, setMuted] = useState<boolean>(false);
   const [addToListBtn, setAddToListBtn] = useState<boolean>(false);
+
   const handleClose = () => {
     setShowModal(false);
   };
@@ -60,7 +61,6 @@ export const ModalUI = () => {
 
     fetchMovie();
   }, [currentMovie]);
-  console.log(trailer, genres);
 
   return (
     <Modal
@@ -68,7 +68,6 @@ export const ModalUI = () => {
       onClose={handleClose}
       sx={{
         display: 'flex',
-        // alignItems: 'center',
         justifyContent: 'center',
       }}
     >

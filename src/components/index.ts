@@ -11,3 +11,4 @@ export * from './main-header';
 export * from './row';
 export * from './modal';
 export * from './chooseThePlan';
+export * from './cardModal';

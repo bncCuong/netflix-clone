@@ -3,14 +3,14 @@ import Image from 'next/image';
 import React from 'react';
 import { Movie } from '../../types';
 import { useRecoilState } from 'recoil';
-import { modalState, movieState } from '@/atoms';
+import { modalTrailerState, movieState } from '@/atoms';
 
 type Props = {
   movie: Movie;
 };
 
 const Thumbnail = ({ movie }: Props) => {
-  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [showModal, setShowModal] = useRecoilState(modalTrailerState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
   return (
@@ -21,7 +21,7 @@ const Thumbnail = ({ movie }: Props) => {
           alt="thumbnail"
           fill
           priority
-          className="w-[200px] h-[100%] absolute cursor-pointer rounded-sm hover:scale-105 animate duration-300 hover:scale-105 animate duration-300 "
+          className="w-[200px] h-[100%] absolute cursor-pointer rounded-sm hover:scale-105 animate duration-300  "
           sizes="100"
           onClick={() => {
             setShowModal(true);
