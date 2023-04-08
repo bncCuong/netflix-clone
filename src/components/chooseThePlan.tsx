@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { Button } from '@/utils';
 import {
   ComputerDesktopIcon,
@@ -5,8 +7,6 @@ import {
   DeviceTabletIcon,
   TvIcon,
 } from '@heroicons/react/24/outline';
-import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
 
 type Props = {};
 
@@ -20,6 +20,7 @@ export const ChooseThePlan = (props: Props) => {
       this.classList.add('active');
       this.classList.remove('notActive');
     }
+
     boxList.forEach((item) =>
       item.addEventListener('click', changeColorHanler),
     );
@@ -31,157 +32,197 @@ export const ChooseThePlan = (props: Props) => {
   }, []);
 
   return (
-    <div className="w-100% lg:px-20">
-      <div className="flex justify-between gap-4 md:justify-end mt-10 ]">
-        <div
-          id="box"
-          className={` w-[24%] sm:w-[100px] md:w-[130px] md:h-32 h-20 text-white flex items-center justify-center
-            text-sm shadow-md shadow-red-500 `}
-        >
-          Mobie
-        </div>
+    <div className="w-100% ">
+      <table className=" w-[100%] text-sm mt-10 text-black/70 sm:table-fixed font-semibold ">
+        <thead>
+          <tr className=" ">
+            <td className="w-[40%] hidden sm:block "></td>
+            <td className="">
+              <div
+                id="box"
+                className={`${
+                  'active' ? 'active' : 'bg-red-300'
+                }  flex items-center justify-center ml-2 text-white font-bold  w-24 h-16 md:w-32 md:h-28 `}
+              >
+                Mobie
+              </div>
+            </td>
+            <td>
+              <div
+                id="box"
+                className={`${
+                  'active' ? 'active' : 'bg-red-300'
+                } flex items-center justify-center ml-2  text-white font-bold  w-24 h-16  md:w-32 md:h-28  `}
+              >
+                Basic
+              </div>
+            </td>
+            <td>
+              <div
+                id="box"
+                className={`${
+                  'active' ? 'active' : 'bg-red-300'
+                } flex items-center justify-center ml-2 text-white font-bold  w-24 h-16   md:w-32 md:h-28 `}
+              >
+                Standard
+              </div>
+            </td>
+            <td>
+              <div
+                id="box"
+                className={`${
+                  'active' ? 'active' : 'bg-red-300'
+                } flex items-center justify-center ml-2 text-white font-bold  w-24 h-16   md:w-32 md:h-28 `}
+              >
+                Premium
+              </div>
+            </td>
+          </tr>
+        </thead>
 
-        <div
-          id="box"
-          className={`${
-            'active' ? 'active' : 'bg-red-300'
-          }  w-[24%] sm:w-[100px] md:w-[130px] md:h-32 h-20 text-white flex items-center justify-center
-            text-sm shadow-md shadow-red-500 `}
-        >
-          Basic
-        </div>
-        <div
-          id="box"
-          className={`${
-            'active' ? 'active' : 'bg-red-300'
-          }  w-[24%] sm:w-[100px] md:w-[130px] md:h-32 h-20 text-white flex items-center justify-center
-            text-sm shadow-md shadow-red-500 `}
-        >
-          Standard
-        </div>
-        <div
-          id="box"
-          className={`${
-            'active' ? 'active' : 'bg-red-300'
-          }  w-[24%] sm:w-[100px] md:w-[130px] md:h-32 h-20 text-white flex items-center justify-center
-            text-sm shadow-md shadow-red-500 `}
-        >
-          Premium
-        </div>
-      </div>
-      <table className="w-[100%] mt-6">
-        {/* MONTHLY PRICE */}
-        <tr>
-          <p className="text-center text-gray-400/70 mt-4 ">Monthly Price</p>
-        </tr>
-        <tr>
-          <ul className="flex justify-between px-4 py-3 border-b-[1px] border-gray-400/50">
-            <li>
+        <tbody>
+          <tr className="sm:hidden">
+            <td></td>
+            <td className="relative">
+              <p className="absolute font-medium left-[66px] text-black top-3 w-[100px]">
+                Monthly price
+              </p>
+            </td>
+          </tr>
+          <tr className=" text-center sm:text-start h-20 border-b  ">
+            <td className="  hidden sm:block  ">
+              <p className="w-[100px] pt-7">Monthly price</p>
+            </td>
+            <td id="col-1" className={`sm:pl-8 md:pl-12 `}>
               70.000<span className="underline">đ</span>
-            </li>
-            <li>
+            </td>
+            <td id="col-2" className="sm:pl-6 md:pl-12 md:pl-12">
               108.000<span className="underline">đ</span>
-            </li>
-            <li>
+            </td>
+            <td id="col-3" className="sm:pl-6 md:pl-12">
               220.000<span className="underline">đ</span>
-            </li>
-            <li>
+            </td>
+            <td id="col-4" className="sm:pl-6 md:pl-12">
               260.000<span className="underline">đ</span>
-            </li>
-          </ul>
-        </tr>
+            </td>
+          </tr>
 
-        {/* VIDEO QUALITY */}
-        <tr>
-          <p className="text-center text-gray-400/70 mt-4">Video quality</p>
-        </tr>
-        <tr>
-          <ul className="flex justify-between px-6 py-3 border-b-[1px] border-gray-400/50">
-            <li>Good</li>
-            <li>Good</li>
-            <li>Better</li>
-            <li className="pr-3">Best</li>
-          </ul>
-        </tr>
+          <tr className="sm:hidden">
+            <td></td>
+            <td className="relative">
+              <p className="absolute font-medium left-[66px] text-black top-3 w-[100px]">
+                Video quanlity
+              </p>
+            </td>
+          </tr>
+          <tr className=" text-center sm:text-start  h-20 border-b ">
+            <td className=" hidden sm:block pt-7 ">
+              <p className="w-[100px]">Video quanlity</p>
+            </td>
+            <td id="col-1" className="sm:pl-10 md:pl-14">
+              Good
+            </td>
+            <td id="col-2" className="sm:pl-10 md:pl-14">
+              Good
+            </td>
+            <td id="col-3" className="sm:pl-10 md:pl-14">
+              Better
+            </td>
+            <td id="col-4" className="sm:pl-10 md:pl-14">
+              Best
+            </td>
+          </tr>
 
-        {/* Resolution */}
-        <tr>
-          <p className="text-center text-gray-400/70 mt-4">Resolution</p>
-        </tr>
-        <tr>
-          <ul className="flex justify-between px-6 py-3 border-b-[1px] border-gray-400/50">
-            <li>480p</li>
-            <li className="pl-2">720p</li>
-            <li className="pl-3">1080p</li>
-            <li className="">4K+HDR</li>
-          </ul>
-        </tr>
+          <tr className="sm:hidden">
+            <td></td>
+            <td className="relative">
+              <p className="absolute font-medium left-[74px] text-black top-3 w-[100px]">
+                Resolution
+              </p>
+            </td>
+          </tr>
+          <tr className=" text-center sm:text-start  h-20 border-b ">
+            <td className=" hidden sm:block pt-7 ">Resolution</td>
+            <td id="col-1" className="sm:pl-10 md:pl-14">
+              480p
+            </td>
+            <td id="col-2" className="sm:pl-10 md:pl-14">
+              720p
+            </td>
+            <td id="col-3" className="sm:pl-10 md:pl-14">
+              1080p
+            </td>
+            <td id="col-4" className="sm:pl-7 md:pl-12">
+              4K+HDR
+            </td>
+          </tr>
 
-        {/* Devices you can use to watch */}
-        <tr>
-          <p className="text-center text-gray-400/70 my-4">
-            Devices you can use to watch
-          </p>
-        </tr>
-        <tr className="w-[100%]">
-          <ul className="flex w-[100%] ">
-            <li className="w-[25%] ml-6">
-              <p>
-                <DevicePhoneMobileIcon className="w-12" /> Phone
+          <tr className="sm:hidden">
+            <td></td>
+            <td className="relative">
+              <p className="absolute font-medium left-[20px] text-black top-3 w-[200px]">
+                Devices you can use to watch
               </p>
-              <p>
-                <DeviceTabletIcon className="w-12" /> Tablet
+            </td>
+          </tr>
+          <tr className="h-[310px]">
+            <td className=" hidden sm:block mt-10 ">
+              <p className="w-[120px] md:w-[170px]">
+                Devices you can use to watch
               </p>
-            </li>
-            <li className="w-[25%]">
-              <p>
-                <DevicePhoneMobileIcon className="w-12" /> Phone
-              </p>
-              <p>
-                <DeviceTabletIcon className="w-12" /> Tablet
-              </p>
-              <p>
-                <ComputerDesktopIcon className="w-12" />{' '}
-                <span className="mr-6">Comp</span>
-              </p>
-              <p>
-                <TvIcon className="w-12" /> <span className="">TV</span>
-              </p>
-            </li>
+            </td>
+            <td>
+              <div
+                id="col-1"
+                className="flex flex-col mb-[115px] items-center   justify-start sm:items-start sm:pl-9 md:pl-[52px] "
+              >
+                <DevicePhoneMobileIcon className="w-10" /> Phone
+                <DeviceTabletIcon className="w-10" /> Tablet
+              </div>
+            </td>
 
-            <li className="w-[25%] ">
-              <p>
-                <DevicePhoneMobileIcon className="w-12" /> Phone
-              </p>
-              <p>
-                <DeviceTabletIcon className="w-12" /> Tablet
-              </p>
-              <p>
-                <ComputerDesktopIcon className="w-12" />{' '}
-                <span className="mr-6">Comp</span>
-              </p>
-              <p>
-                <TvIcon className="w-12" /> <span className="">TV</span>
-              </p>
-            </li>
-            <li className="w-[25%]">
-              {' '}
-              <p>
-                <DevicePhoneMobileIcon className="w-12" /> Phone
-              </p>
-              <p>
-                <DeviceTabletIcon className="w-12" /> Tablet
-              </p>
-              <p>
-                <ComputerDesktopIcon className="w-12" />{' '}
-                <span className="mr-6">Comp</span>
-              </p>
-              <p>
-                <TvIcon className="w-12" /> <span className="">TV</span>
-              </p>
-            </li>
-          </ul>
-        </tr>
+            <td>
+              <div
+                id="col-2"
+                className="flex flex-col items-center sm:items-start sm:pl-9 md:pl-[52px]  "
+              >
+                <DevicePhoneMobileIcon className="w-10" /> Phone
+                <DeviceTabletIcon className="w-10" /> Tablet
+                <ComputerDesktopIcon className="w-10" />{' '}
+                <span className="sm:ml-3">TV</span>
+                <TvIcon className="w-10" />
+                <span className="">Comp</span>
+              </div>
+            </td>
+
+            <td>
+              <div
+                id="col-3"
+                className="flex flex-col items-center sm:items-start sm:pl-9 md:pl-[52px]  "
+              >
+                <DevicePhoneMobileIcon className="w-10" /> Phone
+                <DeviceTabletIcon className="w-10" /> Tablet
+                <ComputerDesktopIcon className="w-10" />
+                <span className="sm:ml-3">TV</span>
+                <TvIcon className="w-10" />
+                <span className="">Comp</span>
+              </div>
+            </td>
+            <td>
+              <div
+                id="col-4"
+                className="flex flex-col items-center sm:items-start sm:pl-9 md:pl-[52px]  "
+              >
+                <DevicePhoneMobileIcon className="w-10" /> Phone
+                <DeviceTabletIcon className="w-10" /> Tablet
+                <ComputerDesktopIcon className="w-10" />
+                <span className="sm:ml-3">TV</span>
+                <TvIcon className="w-10" />
+                <span className="">Comp</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
       </table>
 
       <div className="mt-10 flex flex-col items-center space-y-10 pb-32">
@@ -197,7 +238,7 @@ export const ChooseThePlan = (props: Props) => {
         <Button
           onClick={() => router.push('/signup/payment')}
           medium={true}
-          className="w-[600px]"
+          className="w-[400px] md:w-[500px]"
           textColor="white"
         >
           Next

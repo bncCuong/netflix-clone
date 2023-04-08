@@ -11,6 +11,9 @@
   .active {
     @apply bg-red-500;
   }
+  .text-active {
+    @apply text-red-600;
+  }
   .notActive {
     @apply bg-red-300;
   }

@@ -6,12 +6,12 @@ type Props = {};
 
 const PlanForm = (props: Props) => {
   return (
-    <main className="w-[100%] flex flex-col items-center">
-      <header className="flex justify-between items-center w-[90%]">
+    <main className="w-[100%] flex flex-col items-center ">
+      <header className="flex justify-between items-center w-[90%] border-b-[1px] border-gray-400/30">
         <Header contentBtn="Sign Out" />
       </header>
 
-      <div className="w-[100%] border-t-[1px] border-gray-400/30 flex justify-center ">
+      <div className="max-w-[100%] lg:max-w-[1200px]  flex justify-center ">
         <div className="w-[90%]  mt-10  ">
           <p className="text-sm">
             Step <span className="font-semibold">2</span> of{' '}
