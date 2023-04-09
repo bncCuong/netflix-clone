@@ -5,6 +5,9 @@ import { Movie } from '../../types';
 import { useRecoilValue } from 'recoil';
 import { modalState } from '@/atoms';
 
+import payments from '@/lib/stripe';
+import { getProducts, Product } from '@stripe/firestore-stripe-payments';
+
 interface Props {
   netflixOriginals: Movie[];
   trendingNow: Movie[];
@@ -14,6 +17,7 @@ interface Props {
   horrorMovies: Movie[];
   romanceMovies: Movie[];
   documentaries: Movie[];
+  // products: Product;
 }
 
 export default function Home({
@@ -25,8 +29,11 @@ export default function Home({
   horrorMovies,
   romanceMovies,
   documentaries,
-}: Props) {
+}: // products,
+Props) {
   const showModal = useRecoilValue(modalState);
+  // console.log(products);
+
   return (
     <>
       <Head>
@@ -58,12 +65,12 @@ export default function Home({
 }
 
 export const getServerSideProps = async () => {
-  //   const products = await getProducts(payments, {
-  //     includePrices: true,
-  //     activeOnly: true,
-  //   })
-  //     .then((res) => res)
-  //     .catch((error) => console.log(error.message))
+  const products = await getProducts(payments, {
+    includePrices: true,
+    activeOnly: true,
+  })
+    .then((res) => res)
+    .catch((error) => console.log(error.message));
 
   const [
     netflixOriginals,
@@ -95,7 +102,7 @@ export const getServerSideProps = async () => {
       horrorMovies: horrorMovies.results,
       romanceMovies: romanceMovies.results,
       documentaries: documentaries.results,
-      //   products,
+      // products,
     },
   };
 };

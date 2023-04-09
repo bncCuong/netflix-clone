@@ -14,7 +14,7 @@ import {
   User,
 } from 'firebase/auth';
 import { useRouter } from 'next/router';
-import { auth } from '../../firebase';
+import { auth } from '../lib/firebase';
 
 type AuthProviderProps = {
   children: ReactNode;
