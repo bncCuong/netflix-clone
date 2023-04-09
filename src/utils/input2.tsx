@@ -6,6 +6,7 @@ type Props = {
   require?: boolean;
   registee: any;
   name: string;
+  type?: string;
 };
 
 export const Input2 = ({
@@ -14,6 +15,7 @@ export const Input2 = ({
   require,
   registee,
   name,
+  type,
 }: Props) => {
   const [inputForcus, setinputForcus] = useState<boolean>(false);
   return (
@@ -23,6 +25,7 @@ export const Input2 = ({
       } relative border-[1px] mb-8  px-4 max-w-[450px] w-[90%] h-[64px] rounded-sm `}
     >
       <input
+        type={type}
         onFocus={() => setinputForcus(true)}
         className="w-[100%] h-[100%] outline-none"
         {...registee(name, { required: require, minLength: 4 })}

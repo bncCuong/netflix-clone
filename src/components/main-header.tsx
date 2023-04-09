@@ -22,7 +22,7 @@ import { Button, TippyStyle, baseUrl } from '@/utils';
 import { Movie } from '../../types';
 import { useAuth } from '@/hooks';
 import { useRecoilState } from 'recoil';
-import { modalState, movieState } from '@/atoms';
+import { modalTrailerState, movieState } from '@/atoms';
 import { useRouter } from 'next/router';
 
 type Props = {
@@ -34,7 +34,7 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
   const [showInputSearch, setShowInputSearch] = useState<boolean>(true);
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
 
-  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [showModal, setShowModal] = useRecoilState(modalTrailerState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
   const { logout } = useAuth();

@@ -33,8 +33,8 @@ export const ChooseThePlan = (props: Props) => {
 
   return (
     <div className="w-100% ">
-      <table className=" w-[100%] text-sm mt-10 text-black/70 sm:table-fixed font-semibold ">
-        <thead>
+      <table className=" w-[100%] text-sm mt-10 text-black/70 sm:table-fixed font-semibold relative ">
+        <thead className="sticky">
           <tr className=" ">
             <td className="w-[40%] hidden sm:block "></td>
             <td className="">

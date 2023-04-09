@@ -5,9 +5,6 @@ import { Movie } from '../../types';
 import { useRecoilValue } from 'recoil';
 import { modalState } from '@/atoms';
 
-import payments from '@/lib/stripe';
-import { getProducts, Product } from '@stripe/firestore-stripe-payments';
-
 interface Props {
   netflixOriginals: Movie[];
   trendingNow: Movie[];
@@ -29,11 +26,8 @@ export default function Home({
   horrorMovies,
   romanceMovies,
   documentaries,
-}: // products,
-Props) {
+}: Props) {
   const showModal = useRecoilValue(modalState);
-  // console.log(products);
-
   return (
     <>
       <Head>
