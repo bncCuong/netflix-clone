@@ -12,4 +12,4 @@ export * from './row';
 export * from './modal';
 export * from './tablePlan';
 export * from './cardModal';
-export * from './Loader';
+export * from './loader';
