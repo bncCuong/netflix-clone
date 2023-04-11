@@ -11,6 +11,7 @@ export type ButtonProps = {
   textSize?: string;
   children?: ReactNode;
   className?: string;
+  disabled?: boolean;
 };
 
 export type Tippy = {

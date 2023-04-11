@@ -14,7 +14,7 @@ const SignUpPage = (props: Props) => {
         <Header contentBtn="Sign Out" />
       </header>
 
-      <div className="w-[100%] border-t-[1px] border-gray-400/30 flex flex-col items-center justify-center h-[90vh]">
+      <div className="w-[100%] border-t-[1px] border-gray-400/30 flex flex-col items-center pt-32 h-[75vh]">
         <div className="w-10 h-10 border-[2px] rounded-full border-red-600 flex items-center justify-center">
           <CheckIcon className="text-red-600 w-[24px]" />
         </div>

@@ -13,6 +13,7 @@ export const Button = ({
   children,
   type,
   content,
+  disabled,
 }: Props) => {
   const sizeSmall = `${
     width ? width : 'w-[70px]'
@@ -23,6 +24,7 @@ export const Button = ({
 
   return (
     <button
+    disabled={disabled}
       type={type}
       onClick={onClick}
       className={`${

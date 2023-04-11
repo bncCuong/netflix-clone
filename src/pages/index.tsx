@@ -3,7 +3,10 @@ import { requests } from '../utils';
 import { Footer, MainHeader, ModalUI, Row } from '@/components';
 import { Movie } from '../../types';
 import { useRecoilValue } from 'recoil';
-import { modalState } from '@/atoms';
+import { modalTrailerState } from '@/atoms';
+import { useAuth } from '@/hooks';
+import { getProducts, Product } from '@stripe/firestore-stripe-payments';
+import payments from '@/lib/stripe';
 
 interface Props {
   netflixOriginals: Movie[];
@@ -26,8 +29,15 @@ export default function Home({
   horrorMovies,
   romanceMovies,
   documentaries,
-}: Props) {
-  const showModal = useRecoilValue(modalState);
+}: // products,
+Props) {
+  const { loading } = useAuth();
+  const showModal = useRecoilValue(modalTrailerState);
+  // const subscription = false;
+  // if (loading || subscription === null) return null;
+  // if (!subscription) return <LoginPage products={products} />;
+  // console.log(products);
+
   return (
     <>
       <Head>
@@ -38,7 +48,7 @@ export default function Home({
       </Head>
       <main className="w-full h-[100%] bg-[#141414] relative overflow-hidden  ">
         <MainHeader netflixOgirinals={netflixOriginals} />
-        <section className=" pl-16 -mr-20 animation duration-500 ">
+        <section className=" pl-[114px] -mr-20 animation duration-500 ">
           <Row title="Trending Now" movie={trendingNow} />
           <Row title="Netflix Originals" movie={netflixOriginals} />
           <Row title="TopRated" movie={topRated} />
@@ -59,13 +69,6 @@ export default function Home({
 }
 
 export const getServerSideProps = async () => {
-  const products = await getProducts(payments, {
-    includePrices: true,
-    activeOnly: true,
-  })
-    .then((res) => res)
-    .catch((error) => console.log(error.message));
-
   const [
     netflixOriginals,
     trendingNow,

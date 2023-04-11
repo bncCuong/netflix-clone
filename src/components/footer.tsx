@@ -7,9 +7,9 @@ interface Footer {
 export const Footer = ({ bgColor }: Footer) => {
   return (
     <div
-      className={`py-[100px]  text-start w-[100%] ${
+      className={`py-[50px]  text-start w-[100%] ${
         bgColor
-          ? 'bg-slate-50 text-black/40 px-10 sm:px-20'
+          ? 'bg-slate-50 text-black/60 px-10 sm:px-20'
           : 'text-textColor/80'
       }`}
     >

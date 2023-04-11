@@ -10,5 +10,6 @@ export * from './footer';
 export * from './main-header';
 export * from './row';
 export * from './modal';
-export * from './chooseThePlan';
+export * from './tablePlan';
 export * from './cardModal';
+export * from './Loader';

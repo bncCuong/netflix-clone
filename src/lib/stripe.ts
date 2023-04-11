@@ -7,7 +7,7 @@ import { getFunctions, httpsCallable } from '@firebase/functions';
 import { app } from './firebase';
 
 const payments = getStripePayments(app, {
-  productsCollection: 'product',
+  productsCollection: 'products',
   customersCollection: 'customers',
 });
 
