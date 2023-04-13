@@ -4,9 +4,8 @@ import { Footer, MainHeader, ModalUI, Row } from '@/components';
 import { Movie } from '../../types';
 import { useRecoilValue } from 'recoil';
 import { modalTrailerState } from '@/atoms';
-import { useAuth } from '@/hooks';
-import { getProducts, Product } from '@stripe/firestore-stripe-payments';
-import payments from '@/lib/stripe';
+import { useAuth, useSubscription } from '@/hooks';
+import { useRouter } from 'next/router';
 
 interface Props {
   netflixOriginals: Movie[];
@@ -17,7 +16,6 @@ interface Props {
   horrorMovies: Movie[];
   romanceMovies: Movie[];
   documentaries: Movie[];
-  // products: Product;
 }
 
 export default function Home({
@@ -31,12 +29,16 @@ export default function Home({
   documentaries,
 }: // products,
 Props) {
-  const { loading } = useAuth();
+  const { loading, user } = useAuth();
   const showModal = useRecoilValue(modalTrailerState);
-  // const subscription = false;
-  // if (loading || subscription === null) return null;
-  // if (!subscription) return <LoginPage products={products} />;
-  // console.log(products);
+  const subscription = useSubscription(user);
+
+  const router = useRouter();
+  if (loading || subscription === null) return null;
+  if (!subscription) {
+    router.push('/signup');
+  }
+  console.log(subscription);
 
   return (
     <>

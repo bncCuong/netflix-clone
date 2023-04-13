@@ -11,6 +11,9 @@ import { useMediaQuery, useAuth } from '@/hooks';
 //Components
 import banner from '@/assets/login-banner.jpg';
 import { Button } from '@/utils';
+import { Loader } from '@/components';
+import { useRecoilValue } from 'recoil';
+import { emailLogin } from '@/atoms';
 
 type Inputs = {
   email: string;
@@ -18,12 +21,12 @@ type Inputs = {
   account: string;
 };
 
-const Index = () => {
+const Login = () => {
   const [showPassWord, setShowPassWord] = useState<boolean>(false);
   const [showLearnMore, setShowLearnMore] = useState<boolean>(false);
   const [login, setLogin] = useState<boolean>(false);
   const mediaQuery = useMediaQuery('(max-width: 768px )');
-  const router = useRouter();
+  const defaultEmail = useRecoilValue(emailLogin);
 
   const { signIn, signUp, loading } = useAuth();
   const {
@@ -41,12 +44,6 @@ const Index = () => {
 
   return (
     <div className="w-[full] h-full flex flex-col items-center relative">
-      {loading && (
-        <div className="absolute text-5xl text-red-700">
-          {/* <Spinner /> */}loading...
-        </div>
-      )}
-
       {mediaQuery ? (
         <div className="bg-black w-[100%] h-[100%] absolute -z-20 inset-0"></div>
       ) : (
@@ -85,7 +82,7 @@ const Index = () => {
             </div>
           )}
           <input
-            defaultValue="cuongcuong201194@gmail.com"
+            defaultValue={defaultEmail ? defaultEmail : ''}
             placeholder="Email or phone number"
             type="type"
             className={`w-[100%]  text-black placeholder:text-sm placeholder:font-medium h-12 rounded-md outline-none my-6 px-4 text-lg font-medium ${
@@ -99,7 +96,7 @@ const Index = () => {
 
           <div className="relative">
             <input
-              defaultValue="123456"
+              // defaultValue="123456"
               placeholder="Password"
               {...register('passWord', { required: true })}
               type={!showPassWord ? 'password' : 'text'}
@@ -133,7 +130,7 @@ const Index = () => {
             onClick={() => setLogin(true)}
             className="w-[100%] bg-btnBg h-[56px] text-white text-lg"
           >
-            Sign In
+            {loading ? <Loader color="red" /> : 'Sign In'}
           </Button>
           <div className="mt-3 flex justify-between">
             <div className="flex items-center gap-2 ">
@@ -151,9 +148,9 @@ const Index = () => {
               <button
                 type="submit"
                 onClick={() => setLogin(false)}
-                className="text-textColor"
+                className="text-textColor hover:text-blue-700 hover:scale-105 ml-2 animation du"
               >
-                Sign up now
+                Sign up here
               </button>
             </h1>
             <div className="text-sm my-4">
@@ -272,4 +269,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Login;

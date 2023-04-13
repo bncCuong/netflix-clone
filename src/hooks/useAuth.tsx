@@ -44,6 +44,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [initialLoading, setInitialLoading] = useState<boolean>(true);
 
+  
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {

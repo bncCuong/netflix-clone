@@ -7,7 +7,6 @@ import { useRecoilState } from 'recoil';
 import { Button, thumbnailUrl } from '@/utils';
 import { Genre, Element } from '../../types';
 import Tippy from '@tippyjs/react/headless';
-import { TippyStyle } from '@/utils';
 import {
   SpeakerWaveIcon,
   SpeakerXMarkIcon,

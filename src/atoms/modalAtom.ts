@@ -16,3 +16,8 @@ export const movieState = atom<Movie | DocumentData | null>({
   key: 'movieState',
   default: null,
 });
+
+export const emailLogin = atom({
+  key: 'emailLogin',
+  default: '',
+});
