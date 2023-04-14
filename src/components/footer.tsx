@@ -2,15 +2,14 @@ import Link from 'next/link';
 
 interface Footer {
   bgColor?: boolean;
+  className?: string;
 }
 
-export const Footer = ({ bgColor }: Footer) => {
+export const Footer = ({ bgColor, className }: Footer) => {
   return (
     <div
-      className={`py-[50px]  text-start w-[100%] ${
-        bgColor
-          ? 'bg-slate-50 text-black/60 px-10 sm:px-20'
-          : 'text-textColor/80'
+      className={`py-[50px]  text-start w-[100%] ${className} ${
+        bgColor ? 'bg-slate-50 text-black/60 px-10 sm:px-20' : ''
       }`}
     >
       <Link className="text-start hover:underline" href={'/'}>

@@ -65,7 +65,7 @@ export const MainHeader = ({ netflixOgirinals }: Props) => {
 
   const logoutHanler = () => {
     logout();
-    router.push('/vn-en');
+    router.push('/vn-en/logout');
   };
 
   return (

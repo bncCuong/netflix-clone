@@ -14,8 +14,8 @@ export const Header = ({ contentBtn }: Props) => {
     router.push('/');
   };
   return (
-    <header className="w-[100%]">
-      <div className="h-[86px]  flex items-center justify-between mt-5">
+    <header className="w-[100%] ">
+      <div className="h-[86px] z-10 flex items-center justify-between mt-5">
         <img
           onClick={logoClickHanler}
           src="https://rb.gy/ulxxee"

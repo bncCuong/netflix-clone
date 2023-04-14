@@ -44,8 +44,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [initialLoading, setInitialLoading] = useState<boolean>(true);
 
-  
-
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -54,7 +52,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       } else {
         setUser(null);
         setLoading(true);
-        router.push('/vn-en');
+        // router.push('/vn-en');
       }
       setInitialLoading(false);
     });

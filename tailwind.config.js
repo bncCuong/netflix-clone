@@ -27,6 +27,10 @@ module.exports = {
       backgroundColor: {
         shadow: ' linear-gradient(0deg,#181818,transparent 50%)',
       },
+      backgroundImage: {
+        logoutBG:
+          'url(https://assets.nflxext.com/ffe/siteui/acquisition/login/login-the-crown_2-1500x1000.jpg)',
+      },
       keyframes: {
         slowfade: {
           from: { opacity: 0 },
